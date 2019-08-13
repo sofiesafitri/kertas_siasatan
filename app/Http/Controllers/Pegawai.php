@@ -16,13 +16,8 @@ class Pegawai extends Controller
      */
     public function index()
     {
-        if(!Session::get('login')){
-            return redirect('')->with('alert','You Should Login First');
-        }
-        else{
         $data = DB::table('senarai_nama')->get();
         return view('pegawai/pegawai',['data'=>$data]);
-        }
     }
 
     /**
@@ -32,12 +27,7 @@ class Pegawai extends Controller
      */
     public function create()
     {
-        if(!Session::get('login')){
-            return redirect('')->with('alert','You Should Login First');
-        }
-        else{
         return view('pegawai/create_pegawai');
-        }
     }
 
     /**
@@ -73,13 +63,8 @@ class Pegawai extends Controller
      */
     public function edit($id)
     {
-        if(!Session::get('login')){
-            return redirect('')->with('alert','You Should Login First');
-        }
-        else{
         $data = DB::table('senarai_nama')->where('id',$id)->get();
         return view ('pegawai/edit_pegawai',['data'=>$data]);
-        }
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class AdminLoginController extends Controller
 {
@@ -19,7 +20,7 @@ class AdminLoginController extends Controller
     {
         $this->validate($request, [
             'email' => 'required|email',
-            'password' => 'required|password',
+            'password' => 'required|min:6'
         ]);
 
 

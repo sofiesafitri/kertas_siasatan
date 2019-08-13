@@ -24,8 +24,13 @@
                     <span class="d-lg-none d-md-block">Some Actions</span>
                   </p>
                 </a>
+               
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="/logout">Log Out</a>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                Welcome {{ Auth::user()->username }},<i class="fa fa-sign-out"></i> Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
                 </div>
           </div>
         </div>

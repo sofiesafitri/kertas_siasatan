@@ -16,28 +16,18 @@ class Siasatan extends Controller
      */
     public function index()
     {
-        if(!Session::get('login')){
-            return redirect('')->with('alert','You Should Login First');
-        }
-        else{
         $data = DB::table('database')->paginate(15);
         return view ('data',['data'=>$data]);
-        }
     }
 
     public function homepage()
     {
-        if(!Session::get('login')){
-            return redirect('')->with('alert','You Should Login First');
-        }
-        else{
         $data = DB::table('database')->paginate(15);
         $countJumlah = DB::table('database')->count();
         $countSiasatan = DB::table('database')->where('Proses_Siasatan','Siasatan')->count();
         $countSelesai = DB::table('database')->where('Proses_Siasatan','Selesai')->count();
         $viewShareVars = array_keys(get_defined_vars());
         return view ('homepage',compact($viewShareVars));
-        }
     }
 
     /**
@@ -47,12 +37,7 @@ class Siasatan extends Controller
      */
     public function create()
     {
-        if(!Session::get('login')){
-            return redirect('')->with('alert','You Should Login First');
-        }
-        else{
         return view('cipta_kertas');
-        }
     }
 
     /**
@@ -106,13 +91,8 @@ class Siasatan extends Controller
      */
     public function edit($id)
     {   
-        if(!Session::get('login')){
-            return redirect('')->with('alert','You Should Login First');
-        }
-        else{
         $data = DB::table('database')->where('id',$id)->get();
         return view ('edit_kertas',['data'=>$data]);
-        }
     }
 
     /**

@@ -1,4 +1,6 @@
 <?php
+use App\Http\Middleware\isStatusAdmin;
+use App\Http\Middleware\isStatusUser;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +15,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('data','Siasatan');
-Route::resource('pegawai','Pegawai');
+
+Route::resource('data','Siasatan')->middleware(isStatusUser::class); 
+Route::resource('pegawai','Pegawai')->middleware(isStatusUser::class);
 
 
 Route::get('/search/data','Siasatan@search');
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'Siasatan@homepage')->name('home')->middleware(isStatusUser::class);
 Route::get('/admin','AdminController@index')->name('admin');
 
 Route::prefix('/admin')->group(function(){
