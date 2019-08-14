@@ -16,14 +16,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('data','Siasatan')->middleware(isStatusUser::class); 
-Route::resource('pegawai','Pegawai')->middleware(isStatusUser::class);
+Route::resource('data','Siasatan'); 
+Route::resource('pegawai','Pegawai');
 
 
 Route::get('/search/data','Siasatan@search');
 
 Auth::routes();
-Route::get('/home', 'Siasatan@homepage')->name('home')->middleware(isStatusUser::class);
+Route::get('/home', 'Siasatan@homepage')->name('home');
 Route::get('/admin','AdminController@index')->name('admin');
 
 Route::prefix('/admin')->group(function(){
