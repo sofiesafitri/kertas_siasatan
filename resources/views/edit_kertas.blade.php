@@ -40,14 +40,14 @@
                     <div class="col-md-3 pr-1">
                       <div class="form-group">
                         <label>Lokasi Kertas Siasatan</label>
-                          <select class="custom-select" id="Lokasi_KS" name="Lokasi_KS" value="{{$data->IO}}">
-                                <option value="KBSJKD">KBSJKD</option>
-                                <option value="SIO">SIO</option> 
-                                <option value="IO"> IO</option> 
-                                <option value="AIO"> AIO</option> 
-                                <option value="Bilik IP"> Bilik IP</option> 
-                                <option value="IPK Pulau Pinang"> IPK Pulau Pinang</option> 
-                                <option value="IPD Barat Daya"> IPD Barat Daya</option>   
+                          <select class="custom-select" id="Lokasi_KS" name="Lokasi_KS" value="{{$data->Lokasi_KS}}">
+                                <option value="KBSJKD" {{ $data->Lokasi_KS == 'KBSJKD' ? 'selected' : ''}}>{{$data->Lokasi_KS}}</option>
+                                <option value="SIO" {{ $data->Lokasi_KS == 'SIO' ? 'selected' : ''}}>{{$data->Lokasi_KS}}</option> 
+                                <option value="IO" {{ $data->Lokasi_KS == 'IO' ? 'selected' : ''}}>{{$data->Lokasi_KS}}</option> 
+                                <option value="AIO" {{ $data->Lokasi_KS == 'AIO' ? 'selected' : ''}}>{{$data->Lokasi_KS}}</option> 
+                                <option value="Bilik IP" {{ $data->Lokasi_KS == 'Bilik IP' ? 'selected' : ''}}>{{$data->Lokasi_KS}}</option> 
+                                <option value="IPK Pulau Pinang" {{ $data->Lokasi_KS == 'IPK Pulau Pinang' ? 'selected' : ''}}>{{$data->Lokasi_KS}}</option> 
+                                <option value="IPD Barat Daya" {{ $data->Lokasi_KS == 'IPK Barat Daya' ? 'selected' : ''}}>{{$data->Lokasi_KS}}</option>   
                           </select>
                       </div>
                     </div>
@@ -56,7 +56,13 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>Nama Pegawai Penyiasat</label>
-                        <input type="text" class="form-control" placeholder="Pegawai Penyiasat" name="IO" value="{{$data->IO}}" required>
+                          <select class="custom-select" id="IO" name="IO" value="{{$data->IO}}">
+                            @if($IO->count())
+                            @foreach($IO as $pegawai)
+                              <option value="{{$pegawai->Pkt_No_Nama}}" {{ $data->IO == $pegawai->Pkt_No_Nama ? 'selected' : ''}}>{{$pegawai->Pkt_No_Nama}}</option>
+                            @endforeach
+                            @endif
+                          </select>
                       </div>
                     </div>
                   </div>

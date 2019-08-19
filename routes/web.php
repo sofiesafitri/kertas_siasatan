@@ -12,9 +12,7 @@ use App\Http\Middleware\isStatusUser;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Siasatan@index');
 
 Route::resource('data','Siasatan'); 
 Route::resource('pegawai','Pegawai');
@@ -31,3 +29,5 @@ Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.logi
 Route::post('/login','Auth\AdminLoginController@Login')->name('admin.login.submit');
 Route::get('/','AdminController@index')->name('admin.dashboard');
 });
+
+

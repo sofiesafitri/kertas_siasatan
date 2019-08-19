@@ -97,43 +97,30 @@
                                     @endif
                                 </div>
                             </div>
-                            @if($rolesEnabled)
-                                <div class="form-group has-feedback row {{ $errors->has('role') ? ' has-error ' : '' }}">
-                                    @if(config('laravelusers.fontAwesomeEnabled'))
-                                        {!! Form::label('role', trans('laravelusers::forms.create_user_label_role'), array('class' => 'col-md-3 control-label')); !!}
-                                    @endif
-                                    <div class="col-md-9">
+                            <div class="form-group has-feedback row {{ $errors->has('status') ? ' has-error ' : '' }}">
+                                @if(config('laravelusers.fontAwesomeEnabled'))
+                                    {!! Form::label('status', trans('laravelusers::forms.create_user_label_username'), array('class' => 'col-md-3 control-label')); !!}
+                                @endif
+                                <div class="col-md-9">
                                     <div class="input-group">
-                                        <select class="custom-select form-control" name="role" id="role">
-                                            <option value="">{!! trans('laravelusers::forms.create_user_ph_role') !!}</option>
-                                            @if ($roles)
-                                                @foreach($roles as $role)
-                                                    @if ($currentRole)
-                                                        <option value="{{ $role->id }}" {{ $currentRole->id == $role->id ? 'selected="selected"' : '' }}>{{ $role->name }}</option>
-                                                    @else
-                                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                                    @endif
-                                                @endforeach
-                                            @endif
-                                        </select>
+                                        {!! Form::text('status', $user->status, array('id' => 'status', 'class' => 'form-control', 'placeholder' => trans('laravelusers::forms.create_user_ph_username'))) !!}
                                         <div class="input-group-append">
-                                            <label class="input-group-text" for="role">
+                                            <label class="input-group-text" for="status">
                                                 @if(config('laravelusers.fontAwesomeEnabled'))
-                                                    <i class="{!! trans('laravelusers::forms.create_user_icon_role') !!}" aria-hidden="true"></i>
+                                                    <i class="fa fa-fw {!! trans('laravelusers::forms.create_user_icon_username') !!}" aria-hidden="true"></i>
                                                 @else
                                                     {!! trans('laravelusers::forms.create_user_label_username') !!}
                                                 @endif
                                             </label>
                                         </div>
                                     </div>
-                                    @if ($errors->has('role'))
+                                    @if ($errors->has('status'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('role') }}</strong>
+                                            <strong>{{ $errors->first('status') }}</strong>
                                         </span>
                                     @endif
-                                    </div>
                                 </div>
-                            @endif
+                            </div>
                             <div class="pw-change-container">
                                 <div class="form-group has-feedback row {{ $errors->has('password') ? ' has-error ' : '' }}">
                                     @if(config('laravelusers.fontAwesomeEnabled'))

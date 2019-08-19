@@ -31,7 +31,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {!! trans('laravelusers::laravelusers.showing-all-users') !!}
+                                Users Management
                             </span>
 
                             <div class="btn-group pull-right btn-group-xs">
@@ -103,22 +103,7 @@
                                             <td>{{$user->id}}</td>
                                             <td>{{$user->name}}</td>
                                             <td class="hidden-xs">{{$user->email}}</td>
-                                            @if(config('laravelusers.rolesEnabled'))
-                                                <td class="hidden-sm hidden-xs">
-                                                    @foreach ($user->roles as $user_role)
-                                                        @if ($user_role->name == 'User')
-                                                            @php $badgeClass = 'primary' @endphp
-                                                        @elseif ($user_role->name == 'Admin')
-                                                            @php $badgeClass = 'warning' @endphp
-                                                        @elseif ($user_role->name == 'Unverified')
-                                                            @php $badgeClass = 'danger' @endphp
-                                                        @else
-                                                            @php $badgeClass = 'dark' @endphp
-                                                        @endif
-                                                        <span class="badge badge-{{$badgeClass}}">{{ $user_role->name }}</span>
-                                                    @endforeach
-                                                </td>
-                                            @endif
+                                            <td>{{$user->status}}</td>
                                             <td class="hidden-sm hidden-xs hidden-md">{{$user->created_at}}</td>
                                             <td class="hidden-sm hidden-xs hidden-md">{{$user->updated_at}}</td>
                                             <td>

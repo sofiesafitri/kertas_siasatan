@@ -1,157 +1,47 @@
-@extends('layout.base')
-@section('content')
 
-      <div class="content">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-5 col-md-4">
-                    <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-paper text-warning"></i>
-                    </div>
-                  </div>
-                  <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Jumlah</p>
-                      <p class="card-title">150
-                        <p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-5 col-md-4">
-                    <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-box text-success"></i>
-                    </div>
-                  </div>
-                  <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Siasatan</p>
-                      <p class="card-title">120
-                        <p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-5 col-md-4">
-                    <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-check-2 text-danger"></i>
-                    </div>
-                  </div>
-                  <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">Selesai</p>
-                      <p class="card-title">30
-                        <p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card card-stats">
-              <div class="card-body ">
-                <div class="row">
-                  <div class="col-5 col-md-4">
-                    <div class="icon-big text-center icon-warning">
-                      <i class="nc-icon nc-favourite-28 text-primary"></i>
-                    </div>
-                  </div>
-                  <div class="col-7 col-md-8">
-                    <div class="numbers">
-                      <p class="card-category">KUS</p>
-                      <p class="card-title">N/A
-                        <p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title">Kertas Siasatan Yang Telah Melebihi Tempoh Had Masa Yang Telah Ditetapkan</h4>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead class=" text-primary">
-                      <th>
-                        IO
-                      </th>
-                      <th>
-                        No Rpt
-                      </th>
-                      <th>
-                        No KS
-                      </th>
-                       <th>
-                        Tarikh Minit KS
-                      </th>
-                      <th>
-                        Tarikh Akhir Had Masa
-                      </th>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          Dakota Rice
-                        </td>
-                        <td>
-                          Niger
-                        </td>
-                        <td>
-                          Oud-Turnhout
-                        </td>
-                        <td>
-                          $36,738
-                        </td>
-                        <td>
-                          $36,738
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Minerva Hooper
-                        </td>
-                        <td>
-                          Curaçao
-                        </td>
-                        <td>
-                          Sinaai-Waas
-                        </td>
-                        <td>
-                          $23,789
-                        </td>
-                        <td>
-                          $23,789
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
+<body class="">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="white" data-active-color="danger">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+    -->
+      <div class="logo">
+        <a href="#" class="simple-text logo-normal">
+          Kertas Siasatan
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="{{ Request::is('home') ? 'active' : '' }}">
+            <a href="{{url('home')}}">
+              <i class="nc-icon nc-bank"></i>
+              <p>Homepage</p>
+            </a>
+          </li>
+          <!--<li class="{{ Request::is('data') ? 'active' : '' }}">
+            <a href="{{url('data')}}">
+              <i class="nc-icon nc-tile-56"></i>
+              <p>Data Kertas Siasatan</p>
+            </a>
+          </li>-->
+          <li class="{{ Request::is('data/create') ? 'active' : '' }}">
+            <a href="{{url('data/create')}}">
+              <i class="nc-icon nc-simple-add"></i>
+              <p>Cipta Kertas Siasatan</p>
+            </a>
+          </li>
+          <li class="{{ Request::is('pegawai') ? 'active' : '' }}">
+            <a href="{{url('pegawai')}}">
+              <i class="nc-icon nc-tile-56"></i>
+              <p>Pegawai Penyiasat</p>
+            </a>
+          </li>
+          <li class="{{ Request::is('users') ? 'active' : '' }}">
+            <a href="{{url('users')}}">
+              <i class="nc-icon nc-single-02"></i>
+              <p>Users</p>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
-@endsection

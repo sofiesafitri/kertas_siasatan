@@ -6,9 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Session;
+use \Carbon\Carbon;
 
 class Siasatan extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,16 +21,24 @@ class Siasatan extends Controller
      */
     public function index()
     {
-        $data = DB::table('database')->paginate(15);
+        $dat = DB::table('database')->paginate(15);
+        $data = DB::table('database')->select('id','no_ks','no_rpt','IO','Kategori','Seksyen','Status_Siasatan','Lokasi_KS','created_at','tahun')
+        ->groupBy('tahun')
+        ->paginate(15);
+        //->groupBy(function($date) {
+         //   return Carbon::parse($date->created_at)->format('Y');});
         return view ('data',['data'=>$data]);
     }
 
     public function homepage()
     {
         $data = DB::table('database')->paginate(15);
+        //$tarikh_akhir = DB::table('database')->first()['Tarikh_Akhir_Had_Masa'];
         $countJumlah = DB::table('database')->count();
         $countSiasatan = DB::table('database')->where('Proses_Siasatan','Siasatan')->count();
         $countSelesai = DB::table('database')->where('Proses_Siasatan','Selesai')->count();
+        $curDate = Carbon::now();
+        $dueDate = $data->where('Tarikh_Akhir_Had_Masa', '<', $curDate);
         $viewShareVars = array_keys(get_defined_vars());
         return view ('homepage',compact($viewShareVars));
     }
@@ -37,7 +50,8 @@ class Siasatan extends Controller
      */
     public function create()
     {
-        return view('cipta_kertas');
+        $data = DB::table('senarai_nama')->get();
+        return view('cipta_kertas',['data'=>$data]);
     }
 
     /**
@@ -69,7 +83,7 @@ class Siasatan extends Controller
             'Tempoh_Had_Masa_Tindakan'=>$request->Tempoh_Had_Masa_Tindakan,
             'Tarikh_Akhir_Had_Masa'=>$request->Tarikh_Akhir_Had_Masa,
         ]);
-        return redirect ('data')->with('alert-success','Data Added!');
+        return redirect()->back()->with('alert-success','Data Added!');
     }
 
     /**
@@ -92,7 +106,8 @@ class Siasatan extends Controller
     public function edit($id)
     {   
         $data = DB::table('database')->where('id',$id)->get();
-        return view ('edit_kertas',['data'=>$data]);
+        $IO = DB::table('senarai_nama')->get();
+        return view ('edit_kertas',['data'=>$data],['IO'=>$IO]);
     }
 
     /**
@@ -126,7 +141,7 @@ class Siasatan extends Controller
             'Tarikh_Akhir_Had_Masa'=>$request->Tarikh_Akhir_Had_Masa,
             'updated_at'=> date('Y-m-d H:i:s')
             ]);
-        return redirect('/data')->with('alert-success','Data Updated!');
+            return redirect('home')->with('alert-success','Data Updated!');
     }
 
     /**
@@ -138,7 +153,7 @@ class Siasatan extends Controller
     public function destroy($id)
     {
         DB::table('database')->where('id',$id)->delete();
-        return redirect('/data')->with('alert-success','Data Deleted!');
+        return redirect()->back()->with('alert-success','Data Deleted!');
     }
 
     public function search(Request $request)
@@ -154,6 +169,16 @@ class Siasatan extends Controller
         ->paginate($request->limit ? $request->limit:10);
         $data->appends($request->only('search','limit'));
         return view('data',['data'=>$data]);
+    }
+
+    public function checkMasa(Request $request)
+    {
+        $curDate = Carbon::now();
+        $data = DB::table('database')->select('Tarikh_Akhir_Had_Masa')->get();
+
+        $dueDate = $data->Tarikh_Akhir_Had_Masa->isPast();
+        return view('homepage',['dueDate'=>$data]);
+
     }
 
 }

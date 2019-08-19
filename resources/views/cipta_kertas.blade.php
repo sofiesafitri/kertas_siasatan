@@ -59,8 +59,13 @@
                   <div class="row">
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
+                      
                         <label>Nama Pegawai Penyiasat</label>
-                        <input type="text" class="form-control" placeholder="Pegawai Penyiasat" name="IO" required>
+                        <select class="custom-select" id="IO" name="IO" >
+                          @foreach ($data as $nama)
+                          <option value="{{$nama->Pkt_No_Nama}}">{{$nama->Pkt_No_Nama}}</option>
+                          @endforeach
+                         </select>
                       </div>
                     </div>
                   </div>
@@ -110,8 +115,8 @@
                       <div class="form-group">
                         <label>Proses Siasatan</label>
                           <select class="custom-select" id="Proses_Siasatan" name="Proses_Siasatan">
-                                <option value="KBSJKD">Siasatan</option>
-                                <option value="SIO">Selesai</option> 
+                                <option value="Siasatan">Siasatan</option>
+                                <option value="Selesai">Selesai</option> 
                           </select>
                       </div>
                     </div>

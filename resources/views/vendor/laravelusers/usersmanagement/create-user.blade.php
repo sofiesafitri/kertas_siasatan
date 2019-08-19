@@ -91,39 +91,30 @@
                                     @endif
                                 </div>
                             </div>
-                            @if($rolesEnabled)
-                                <div class="form-group has-feedback row {{ $errors->has('role') ? ' has-error ' : '' }}">
-                                    @if(config('laravelusers.fontAwesomeEnabled'))
-                                        {!! Form::label('role', trans('laravelusers::forms.create_user_label_role'), array('class' => 'col-md-3 control-label')); !!}
-                                    @endif
-                                    <div class="col-md-9">
+                            <div class="form-group has-feedback row {{ $errors->has('status') ? ' has-error ' : '' }}">
+                                @if(config('laravelusers.fontAwesomeEnabled'))
+                                    <label class = "col-md-3 control-label"> Status </label>
+                                @endif
+                                <div class="col-md-9">
                                     <div class="input-group">
-                                        <select class="custom-select form-control" name="role" id="role">
-                                            <option value="">{!! trans('laravelusers::forms.create_user_ph_role') !!}</option>
-                                            @if ($roles)
-                                                @foreach($roles as $role)
-                                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                                @endforeach
-                                            @endif
-                                        </select>
+                                        {!! Form::text('status', NULL, array('id' => 'status', 'class' => 'form-control', 'placeholder' => trans('Status'))) !!}
                                         <div class="input-group-append">
-                                            <label class="input-group-text" for="role">
+                                            <label class="input-group-text" for="status">
                                                 @if(config('laravelusers.fontAwesomeEnabled'))
-                                                    <i class="{!! trans('laravelusers::forms.create_user_icon_role') !!}" aria-hidden="true"></i>
+                                                    <i class="fa fa-fw {!! trans('laravelusers::forms.create_user_icon_username') !!}" aria-hidden="true"></i>
                                                 @else
-                                                    {!! trans('laravelusers::forms.create_user_label_username') !!}
+                                                    {!! trans('laravelusers::forms.create_user_label_status') !!}
                                                 @endif
                                             </label>
                                         </div>
                                     </div>
-                                    @if ($errors->has('role'))
+                                    @if ($errors->has('status'))
                                         <span class="help-block">
-                                            <strong>{{ $errors->first('role') }}</strong>
+                                            <strong>{{ $errors->first('status') }}</strong>
                                         </span>
                                     @endif
-                                    </div>
                                 </div>
-                            @endif
+                            </div>
                             <div class="form-group has-feedback row {{ $errors->has('password') ? ' has-error ' : '' }}">
                                 @if(config('laravelusers.fontAwesomeEnabled'))
                                     {!! Form::label('password', trans('laravelusers::forms.create_user_label_password'), array('class' => 'col-md-3 control-label')); !!}

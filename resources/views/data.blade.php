@@ -25,12 +25,13 @@
                     @endif
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Kertas Siasatan Yang Telah Melebihi Tempoh Had Masa Yang Telah Ditetapkan</h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table">
+                  
                     <thead class=" text-primary">
+                      <th>Tahun</th>
                       <th>No Kertas Siasatan</th>
                       <th>No Laporan Polis</th>
                       <th>Pegawai Penyiasat</th>
@@ -42,6 +43,7 @@
                     <tbody>
                       @foreach($data as $datas)
                       <tr>
+                        <td>{{ $datas->tahun}}</td>
                         <td>{{ $datas->no_ks}}</td>
                         <td>{{ $datas->no_rpt}}</td>
                         <td>{{ $datas->IO}}</td>
@@ -49,7 +51,7 @@
                         <td>{{ $datas->Seksyen}}</td>
                         <td>{{ $datas->Status_Siasatan}}</td>
                         <td>{{ $datas->Lokasi_KS}}</td>
-                        <td>
+                       <!-- <td>
                           <form action="{{ route('data.destroy', $datas->id) }}" method="post">
                             {{ csrf_field() }}
                               {{ method_field('DELETE') }}
@@ -59,7 +61,7 @@
                                   <i class="nc-icon nc-basket"></i>
                                 </button>
                             </form>
-                        </td> 
+                        </td> -->
                       </tr>
                       @endforeach
                     </tbody>

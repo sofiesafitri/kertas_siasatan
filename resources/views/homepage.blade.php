@@ -2,6 +2,14 @@
 @section('content')
 
       <div class="content">
+      @if ($message = Session::get('error'))
+              <div class="alert alert-danger">
+                <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                  <i class="nc-icon nc-simple-remove"></i>
+                </button>
+                <span>{{$message}}</span>
+              </div>
+            @endif
       <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="card card-stats">
@@ -14,9 +22,10 @@
                   </div>
                   <div class="col-7 col-md-8">
                     <div class="numbers">
+                      <a href="{{url('data')}}"">
                       <p class="card-category">Jumlah</p>
-                      <p class="card-title">{{$countJumlah}}
-                        <p>
+                      <p class="card-title">{{$countJumlah}}</p>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -109,13 +118,16 @@
                       <th>Tarikh Akhir Had Masa</th>
                     </thead>
                     <tbody>
-                      @foreach($data as $datas)
+                      @foreach($dueDate as $datas)
                       <tr>
                         <td>{{ $datas->IO}}</td>
                         <td>{{ $datas->no_rpt}}</td>
                         <td>{{ $datas->no_ks}}</td>
                         <td>{{ $datas->Tarikh_Minit_KS}}</td>
-                        <td>{{ $datas->Tarikh_Akhir_Had_Masa}}</td>
+                        
+                        @if($dueDate)
+                        <td bgcolor="red">{{ $datas->Tarikh_Akhir_Had_Masa}}</td>
+                        @endif
                         <td>
                           <form action="{{ route('data.destroy', $datas->id) }}" method="post">
                             {{ csrf_field() }}
