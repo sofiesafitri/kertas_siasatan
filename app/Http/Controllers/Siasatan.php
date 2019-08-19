@@ -21,13 +21,19 @@ class Siasatan extends Controller
      */
     public function index()
     {
-        $dat = DB::table('database')->paginate(15);
-        $data = DB::table('database')->select('id','no_ks','no_rpt','IO','Kategori','Seksyen','Status_Siasatan','Lokasi_KS','created_at','tahun')
+        $data = DB::table('database')->paginate(15);
+        $dat = DB::table('database')->select('id','no_ks','no_rpt','IO','Kategori','Seksyen','Status_Siasatan','Lokasi_KS','created_at','tahun')
         ->groupBy('tahun')
         ->paginate(15);
-        //->groupBy(function($date) {
-         //   return Carbon::parse($date->created_at)->format('Y');});
-        return view ('data',['data'=>$data]);
+        $tahun = DB::table('database')->select('tahun')->groupBy('tahun')->get();
+        $viewShareVars = array_keys(get_defined_vars());
+        
+        if(request()->has('tahun')){
+        $data = DB::table('database')
+        ->where('tahun','like', request('tahun'))
+        ->paginate(10);
+        }
+        return view ('data',compact($viewShareVars));
     }
 
     public function homepage()
@@ -168,17 +174,15 @@ class Siasatan extends Controller
         ->orWhere('IO','like',"%".$search."%")
         ->paginate($request->limit ? $request->limit:10);
         $data->appends($request->only('search','limit'));
-        return view('data',['data'=>$data]);
+        $tahun = DB::table('database')->select('tahun')->groupBy('tahun')->get();
+        $viewShareVars = array_keys(get_defined_vars());
+        return view('data',compact($viewShareVars));
     }
 
-    public function checkMasa(Request $request)
-    {
-        $curDate = Carbon::now();
-        $data = DB::table('database')->select('Tarikh_Akhir_Had_Masa')->get();
 
-        $dueDate = $data->Tarikh_Akhir_Had_Masa->isPast();
-        return view('homepage',['dueDate'=>$data]);
-
+    public function filter(Request $request){
+        $tahun = DB::table('database')->select('tahun')->groupBy('tahun');
+        
     }
 
 }

@@ -23,13 +23,26 @@
                         <span>{{$message}}</span>
                       </div>
                     @endif
+              <form action="/filter" method="GET">
+                <div class="col-md-3 pr-1">
+                  <div class="form-group">
+                    <label>Filter</label>
+                      <select class="custom-select" id="tahun" name="tahun">
+                        @foreach ($tahun as $a)
+                          <option>{{$a->tahun}}</option>
+                        @endforeach
+                          </select>
+                          <button class="btn btn-primary" type="submit">Show</button>
+                          &nbsp
+                          <a href="{{url('data')}}"> Reset </a>
+                      </div>
+                    </div>
             <div class="card">
               <div class="card-header">
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table">
-                  
                     <thead class=" text-primary">
                       <th>Tahun</th>
                       <th>No Kertas Siasatan</th>
@@ -67,6 +80,7 @@
                     </tbody>
                   </table>
                 </div>
+                </form>
               </div>
             </div>
           </div>

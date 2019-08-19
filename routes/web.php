@@ -12,13 +12,14 @@ use App\Http\Middleware\isStatusUser;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'Siasatan@index');
+Route::get('/', 'Siasatan@homepage');
 
 Route::resource('data','Siasatan'); 
 Route::resource('pegawai','Pegawai');
 
 
 Route::get('/search/data','Siasatan@search');
+Route::get('/filter','Siasatan@index');
 
 Auth::routes();
 Route::get('/home', 'Siasatan@homepage')->name('home');
