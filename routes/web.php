@@ -24,11 +24,8 @@ Route::get('/filter','Siasatan@index');
 Auth::routes();
 Route::get('/home', 'Siasatan@homepage')->name('home');
 Route::get('/admin','AdminController@index')->name('admin');
+Route::get('/print','Siasatan@printPDF')->name('print');
 
-Route::prefix('/admin')->group(function(){
-Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
-Route::post('/login','Auth\AdminLoginController@Login')->name('admin.login.submit');
-Route::get('/','AdminController@index')->name('admin.dashboard');
-});
+
 
 

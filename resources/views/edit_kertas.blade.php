@@ -23,17 +23,18 @@
                       <div class="form-group">
                         <label>Bulan</label>
                           <select class="custom-select" id="bulan" name="bulan" value="{{$data->bulan}}">
-                                <option value="January"> January</option>
-                                <option value="February"> February</option> 
-                                <option value="March"> March</option> 
-                                <option value="April"> April</option> 
-                                <option value="January"> May</option> 
-                                <option value="June"> June</option> 
-                                <option value="July"> July</option> 
-                                <option value="August"> August</option> 
-                                <option value="September"> September</option> 
-                                <option value="November"> November</option> 
-                                <option value="Desember"> Desember</option>   
+                                <option value="January"  {{ $data->bulan == 'January' ? 'selected' : ''}}> January</option>
+                                <option value="February" {{ $data->bulan == 'February' ? 'selected' : ''}}> February</option> 
+                                <option value="March" {{ $data->bulan == 'March' ? 'selected' : ''}}> March</option> 
+                                <option value="April" {{ $data->bulan == 'April' ? 'selected' : ''}}> April</option> 
+                                <option value="May" {{ $data->bulan == 'May' ? 'selected' : ''}}> May</option> 
+                                <option value="June" {{ $data->bulan == 'June' ? 'selected' : ''}}> June</option> 
+                                <option value="July" {{ $data->bulan == 'July' ? 'selected' : ''}}> July</option> 
+                                <option value="August" {{ $data->bulan == 'August' ? 'selected' : ''}}> August</option> 
+                                <option value="September" {{ $data->bulan == 'September' ? 'selected' : ''}}> September</option>
+                                <option value="October" {{ $data->bulan == 'October' ? 'selected' : ''}}> September</option> 
+                                <option value="November" {{ $data->bulan == 'November' ? 'selected' : ''}}> November</option> 
+                                <option value="Desember" {{ $data->bulan == 'Desember' ? 'selected' : ''}}> Desember</option>   
                           </select>
                       </div>
                     </div>
@@ -112,8 +113,8 @@
                       <div class="form-group">
                         <label>Proses Siasatan</label>
                           <select class="custom-select" id="Proses_Siasatan" name="Proses_Siasatan" value="{{$data->Proses_Siasatan}}">
-                                <option value="KBSJKD">Siasatan</option>
-                                <option value="SIO">Selesai</option> 
+                                <option value="Siasatan" {{ $data->Proses_Siasatan == 'Siasatan' ? 'selected' : ''}}>Siasatan</option>
+                                <option value="Selesai" {{ $data->Proses_Siasatan == 'Selesai' ? 'selected' : ''}}>Selesai</option> 
                           </select>
                       </div>
                     </div>
@@ -121,8 +122,8 @@
                       <div class="form-group">
                         <label>Status Siasatan</label>
                          <select class="custom-select" id="Status_Siasatan" name="Status_Siasatan" value="{{$data->Status_Siasatan}}">
-                                <option value="Aktif">Aktif</option>
-                                <option value="Jatuh Hukum">Jatuh Hukum</option> 
+                                <option value="Aktif" {{ $data->Status_Siasatan == 'Aktif' ? 'selected' : ''}}>Aktif</option>
+                                <option value="Jatuh Hukum" {{ $data->Status_Siasatan == 'Jatuh Hukum' ? 'selected' : ''}}>Jatuh Hukum</option> 
                           </select>
                       </div>
                     </div>
@@ -157,18 +158,18 @@
                     <div class="col-md-3 pr-1">
                       <div class="form-group">
                         <label>Tarikh Minit KS</label>
-                          <input type="date" class="form-control" name="Tarikh_Minit_KS">
+                          <input type="date" class="form-control" name="Tarikh_Minit_KS" value="{{$data->Tarikh_Minit_KS}}">
                       </div>
                     </div>
                     <div class="col-md-3 pr-1">
                       <div class="form-group">
                         <label>Tempoh Had Masa Tindakan</label>
                          <select class="custom-select" id="Tempoh_Had_Masa_Tindakan" name="Tempoh_Had_Masa_Tindakan" value="{{$data->Tempoh_Had_Masa_Tindakan}}">
-                                <option value="Aktif">No Data</option>
-                                <option value="Jatuh Hukum">Satu Minggu</option> 
-                                <option value="Jatuh Hukum">Dua Minggu</option> 
-                                <option value="Jatuh Hukum">Tiga Minggu</option> 
-                                <option value="Jatuh Hukum">Satu Bulan</option> 
+                                <option value="No Data" {{ $data->Tempoh_Had_Masa_Tindakan == 'No Data' ? 'selected' : ''}}>No Data</option>
+                                <option value="Satu Minggu" {{ $data->Tempoh_Had_Masa_Tindakan == 'Satu Minggu' ? 'selected' : ''}}>Satu Minggu</option> 
+                                <option value="Dua Minggu" {{ $data->Tempoh_Had_Masa_Tindakan == 'Dua Minggu' ? 'selected' : ''}}>Dua Minggu</option> 
+                                <option value="Tiga Minggu" {{ $data->Tempoh_Had_Masa_Tindakan == 'Tiga Minggu' ? 'selected' : ''}}>Tiga Minggu</option> 
+                                <option value="Satu Bulan" {{ $data->Tempoh_Had_Masa_Tindakan == 'Satu Bulan' ? 'selected' : ''}}>Satu Bulan</option> 
                           </select>
                       </div>
                     </div>

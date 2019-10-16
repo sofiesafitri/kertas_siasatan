@@ -37,6 +37,8 @@
                           <a href="{{url('data')}}"> Reset </a>
                       </div>
                     </div>
+                </form>
+                <!--<button class="btn btn-danger" align="right">Print PDF</button>-->
             <div class="card">
               <div class="card-header">
               </div>
@@ -64,7 +66,7 @@
                         <td>{{ $datas->Seksyen}}</td>
                         <td>{{ $datas->Status_Siasatan}}</td>
                         <td>{{ $datas->Lokasi_KS}}</td>
-                       <!-- <td>
+                        <td>
                           <form action="{{ route('data.destroy', $datas->id) }}" method="post">
                             {{ csrf_field() }}
                               {{ method_field('DELETE') }}
@@ -74,7 +76,7 @@
                                   <i class="nc-icon nc-basket"></i>
                                 </button>
                             </form>
-                        </td> -->
+                        </td>
                       </tr>
                       @endforeach
                     </tbody>

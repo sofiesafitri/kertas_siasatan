@@ -26,6 +26,7 @@ class Siasatan extends Controller
         ->groupBy('tahun')
         ->paginate(15);
         $tahun = DB::table('database')->select('tahun')->groupBy('tahun')->get();
+        $countJumlah = DB::table('database')->count();
         $viewShareVars = array_keys(get_defined_vars());
         
         if(request()->has('tahun')){

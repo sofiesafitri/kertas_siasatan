@@ -167,11 +167,11 @@
                       <div class="form-group">
                         <label>Tempoh Had Masa Tindakan</label>
                          <select class="custom-select" id="Tempoh_Had_Masa_Tindakan" name="Tempoh_Had_Masa_Tindakan">
-                                <option value="Aktif">No Data</option>
-                                <option value="Jatuh Hukum">Satu Minggu</option> 
-                                <option value="Jatuh Hukum">Dua Minggu</option> 
-                                <option value="Jatuh Hukum">Tiga Minggu</option> 
-                                <option value="Jatuh Hukum">Satu Bulan</option> 
+                                <option value="No Data">No Data</option>
+                                <option value="Satu Minggu">Satu Minggu</option> 
+                                <option value="Dua Minggu">Dua Minggu</option> 
+                                <option value="Tiga Minggu">Tiga Minggu</option> 
+                                <option value="Satu Bulan">Satu Bulan</option> 
                           </select>
                       </div>
                     </div>

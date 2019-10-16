@@ -22,8 +22,9 @@
                   <i class="nc-icon nc-settings-gear-65"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <p class="dropdown-item">Welcome {{ Auth::user()->name }}</p>
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                Welcome {{ Auth::user()->name }},<i class="fa fa-sign-out"></i> Logout</a>
+                <i class="fa fa-sign-out"></i> Logout</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
